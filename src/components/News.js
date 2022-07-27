@@ -24,11 +24,11 @@ extends Component {
     }
   }
   async componentDidMount(){
-      let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7fd19abc984a44e6bf09fe626a1fa478&pageSize=${this.props.pageSize}`;
+      let url=`https://saurav.tech/NewsAPI/top-headlines/category/${this.props.category}/in.json`;
       this.setState({loading:true});
       let data=await fetch(url);
       let parsedData=await data.json();
-      console.log(parsedData);
+      console.log("--->",parsedData);
       this.setState({
         articles: parsedData.articles, 
         totalResults:parsedData.totalResults,
@@ -76,12 +76,12 @@ extends Component {
                   </div>
                 })}
             </div>
-            <div className="container">
+            {/* <div className="container">
               <div className="d-flex justify-content-between">
                 <button disabled={this.state.page<=1} onClick={this.handlePrevbtn} type="button" className="btn btn-secondary">&larr; Previous</button>
                 <button disabled={this.state.page+1 > Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" onClick={this.handleNextbtn} className="btn btn-secondary">Next &rarr;</button>
               </div>
-            </div>
+            </div> */}
         </div>
     )
   }
